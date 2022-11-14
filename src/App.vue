@@ -25,6 +25,7 @@ export default{
         .get(store.apiUrlSeries + store.apiKey +  `&query=${store.searchKey}` )
         .then((resp) => {
           this.store.series = resp.data.results
+
         })
     }
   },

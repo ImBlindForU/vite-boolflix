@@ -23,14 +23,21 @@ import { store } from '../store';
 </template>
 
 <style lang="scss" >
-    input{
-        line-height: 3rem;
-        font-size: 3rem;
-    }
+    .container{
 
-    button{
+        width: 100vw;
+        height: 10vh;
+        background-color: #000000;
+        input{
         line-height: 3rem;
         font-size: 3rem;
+        }
+
+        button{
+            line-height: 3rem;
+            font-size: 3rem;
+        }
     }
+    
     
 </style>

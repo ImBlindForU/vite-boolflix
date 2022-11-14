@@ -17,7 +17,7 @@ import { store } from '../store';
     <div class="container">
         <label for="search"></label>
         <input v-model="store.searchKey" type="text" name="search" >
-        <button @click="$emit('searchBtn')">Cerca</button>
+        <button  @click="$emit('searchBtn')">Cerca</button>
     </div>
 
 </template>

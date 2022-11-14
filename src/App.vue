@@ -18,7 +18,9 @@ export default{
    getApiCall(){
       axios
         .get(store.apiUrlMovie + store.apiKey +  `&query=${store.searchKey}` )
-        .then((resp) => {console.log(resp)})
+        .then((resp) => {
+          this.store.movies = resp.data.results
+        })
     }
   },
   created (){

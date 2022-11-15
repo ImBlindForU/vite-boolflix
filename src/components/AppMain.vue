@@ -6,6 +6,7 @@ import { store } from '../store';
         data(){
             return{
             store,
+            
             }
         },methods:{
            
@@ -37,7 +38,12 @@ import { store } from '../store';
                         </span>    
                         <br>
                         
-                <span >-voto: {{movie.vote_average}}</span>
+                <span >
+                    -voto: {{movie.vote_average}}
+                    <small v-for="number in 2">
+                        <i class="fa-solid fa-star"></i>
+                    </small>
+                </span>
 
             </li>
         </ul>

@@ -9,7 +9,9 @@ import { store } from '../store';
             
             }
         },methods:{
-           
+          divideNumb(){
+            mathFloor(this.store.movies.vote_average % 2)
+          }
         }
     }
     
@@ -19,11 +21,13 @@ import { store } from '../store';
     <div class="container-card">
         <ul class="flex">
             <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie">
-                <img :src="`${store.urlImg}${movie.poster_path}`" alt="">
-
-                -Titolo:{{movie.title}} <br>
-                -Titolo originale :{{movie.original_title}} <br>
-                -lingua: 
+                <div class="container-img ">
+                    <img :src="`${store.urlImg}${movie.poster_path}`" alt="">
+                </div>  
+                <div class="container-text ">
+                    -Titolo:{{movie.title}} <br>
+                    -Titolo originale :{{movie.original_title}} <br>
+                    -lingua: 
                         <span v-if="movie.original_language === 'it'">
                             <img src="https://i.pinimg.com/564x/db/0d/7a/db0d7a27d2f84cd939a743e5a06e4981.jpg" alt="">
                         </span> 
@@ -38,23 +42,28 @@ import { store } from '../store';
                         </span>    
                         <br>
                         
-                <span >
-                    -voto: {{movie.vote_average}}
-                    <small v-for="number in 2">
-                        <i class="fa-solid fa-star"></i>
-                    </small>
-                </span>
+                        <span :fun="divideNumb">
+                                {{movie.vote_average}}
+                        </span>
+                        <small v-for="number in 2">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
 
+                </div>
+                
             </li>
         </ul>
 
         <ul class="flex">
             <li class="serie" v-for="serie in store.series" :key="serie.id" :movie="series">
+                <div class="container-img">
+                    <img :src="`${store.urlImg}${serie.poster_path}`" alt="">
+                </div>
 
-                <img :src="`${store.urlImg}${serie.poster_path}`" alt="">
-                -Titolo:{{serie.name}} <br>
-                -Titolo originale :{{serie.original_name}} <br>
-                -lingua: 
+                <div class="container-text">
+                    -Titolo:{{serie.name}} <br>
+                    -Titolo originale :{{serie.original_name}} <br>
+                    -lingua: 
                             <span v-if="serie.original_language === 'it'">
                                 <img src="https://i.pinimg.com/564x/db/0d/7a/db0d7a27d2f84cd939a743e5a06e4981.jpg" alt="">
                             </span> 
@@ -68,7 +77,9 @@ import { store } from '../store';
                                 {{serie.original_language}}
                             </span>    
                             <br> 
-                -voto: {{serie.vote_average}}
+                    -voto: {{serie.vote_average}}
+                
+                </div>
                 
             </li>
         </ul>

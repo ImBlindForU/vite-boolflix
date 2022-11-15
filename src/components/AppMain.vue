@@ -1,16 +1,21 @@
 <script>
 import { store } from '../store';
-
+import cardAll from "./cardAll.vue"
     export default{
         name: "AppMain",
+        components:{
+            cardAll,
+        
+        },
         data(){
             return{
             store,
-            
+           
             }
         },methods:{
           divideNumb(vote){
-            Math.floor(vote / 2)
+            return Math.floor(vote / 2)
+            
           }
         }
     }
@@ -21,10 +26,19 @@ import { store } from '../store';
     <div class="container-card">
         <ul class="flex">
             <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie" :divideNumb="divideNumb">
-                <div class="container-img ">
+                <div 
+                    @mockup="(hover = true), index ++"
+                    @mouseleav="hover = false"
+                    v-bind:class="{hidden : hover}"
+                    class="container-img ">
                     <img :src="`${store.urlImg}${movie.poster_path}`" alt="">
                 </div>  
-                <div class="container-text ">
+                <div class="container-text hidden"
+
+                @mouseover="over = false"
+                @mouseleav="over = true"
+                v-bind:class="{ active : over }"
+                    >
                     -Titolo:{{movie.title}} <br>
                     -Titolo originale :{{movie.original_title}} <br>
                     -lingua: 
@@ -45,8 +59,23 @@ import { store } from '../store';
                         <span>
                                 {{divideNumb(movie.vote_average)}}
                         </span>
-                        <small v-for="number in 2">
+                        <small v-if="divideNumb(movie.vote_average) === 1" v-for="number in 1">
                                 <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-if="divideNumb(movie.vote_average) === 2" v-for="number in 2">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(movie.vote_average) === 3" v-for="number in 3">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(movie.vote_average) === 4" v-for="number in 4">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(movie.vote_average) === 5" v-for="number in 5">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(movie.vote_average) === 0" v-for="number in 0">
+                                no star
                         </small>
 
                 </div>
@@ -55,7 +84,7 @@ import { store } from '../store';
         </ul>
 
         <ul class="flex">
-            <li class="serie" v-for="serie in store.series" :key="serie.id" :movie="series">
+            <li class="serie" v-for="serie in store.series" :key="serie.id" :movie="series" :divideNumb="divideNumb">
                 <div class="container-img">
                     <img :src="`${store.urlImg}${serie.poster_path}`" alt="">
                 </div>
@@ -77,8 +106,25 @@ import { store } from '../store';
                                 {{serie.original_language}}
                             </span>    
                             <br> 
-                    -voto: {{serie.vote_average}}
-                
+                        -voto: {{divideNumb(serie.vote_average)}}
+                        <small v-if="divideNumb(serie.vote_average) === 1" v-for="number in 1">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-if="divideNumb(serie.vote_average) === 2" v-for="number in 2">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(serie.vote_average) === 3" v-for="number in 3">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(serie.vote_average) === 4" v-for="number in 4">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(serie.vote_average) === 5" v-for="number in 5">
+                                <i class="fa-solid fa-star"></i>
+                        </small>
+                        <small v-else-if="divideNumb(serie.vote_average) === 0" v-for="number in 0">
+                                no star 
+                        </small>
                 </div>
                 
             </li>
@@ -93,7 +139,14 @@ import { store } from '../store';
 <style lang="scss" >
      .container-card{
         width: 100vw;
-        
+        .container-img{
+            width: 100%;
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
         background-color: #434343;
         .flex{
             display: flex;
@@ -115,11 +168,7 @@ import { store } from '../store';
             width: 15vw;
             border: 1px solid black;
          
-            span{
-                img{
-                    width: 1.5vw;
-                }
-            }
+
         
        }
        .serie{
@@ -129,11 +178,6 @@ import { store } from '../store';
             flex-wrap: wrap;    
             width: 15vw;
             border: 1px solid black;
-            span{
-                img{
-                    width: 1.5vw;
-                }
-            }
         
        }
      }

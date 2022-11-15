@@ -23,12 +23,27 @@ import cardAll from "./cardAll.vue"
 </script>
 
 <template>
-    <div class="container-card">
+    <section>
+        <h2>Movies</h2>
+        <div class="card-list">
+            
+            <cardAll v-for="movie in store.movies" :key="movie.id" :item="movie" />
+        </div>
+    </section>
+
+    <section>
+        <h2>Serie TV</h2>
+
+        <div class="card-list">
+            <cardAll v-for="serie in store.series" :key="serie.id" :item="serie" />
+        </div>
+    </section>
+    <!-- <div class="container-card">
         <ul class="flex">
             <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie" :divideNumb="divideNumb">
                 <div 
-                    @mockup="(hover = true), index ++"
-                    @mouseleav="hover = false"
+                    @mouseover="hover = true"
+                    @mouseleave="hover = false"
                     v-bind:class="{hidden : hover}"
                     class="container-img ">
                     <img :src="`${store.urlImg}${movie.poster_path}`" alt="">
@@ -36,7 +51,7 @@ import cardAll from "./cardAll.vue"
                 <div class="container-text hidden"
 
                 @mouseover="over = false"
-                @mouseleav="over = true"
+                @mouseleave="over = true"
                 v-bind:class="{ active : over }"
                     >
                     -Titolo:{{movie.title}} <br>
@@ -129,7 +144,7 @@ import cardAll from "./cardAll.vue"
                 
             </li>
         </ul>
-    </div>
+    </div> -->
     
 
     
@@ -137,49 +152,55 @@ import cardAll from "./cardAll.vue"
 
 
 <style lang="scss" >
-     .container-card{
-        width: 100vw;
-        .container-img{
-            width: 100%;
-            img{
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-            }
-        }
-        background-color: #434343;
-        .flex{
-            display: flex;
-            flex-wrap: wrap;
+.card-list{
+    display: flex;
+    margin-top: 3rem;
+}
+
+
+    //  .container-card{
+    //     width: 100vw;
+    //     .container-img{
+    //         width: 100%;
+    //         img{
+    //             object-fit: cover;
+    //             width: 100%;
+    //             height: 100%;
+    //         }
+    //     }
+    //     background-color: #434343;
+    //     .flex{
+    //         display: flex;
+    //         flex-wrap: wrap;
             
-        }
-        li{
-            font-size: 3rem;
-            text-align: center;
-            margin: 1.5rem;
-        }
+    //     }
+    //     li{
+    //         font-size: 3rem;
+    //         text-align: center;
+    //         margin: 1.5rem;
+    //     }
 
-       .movie{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+    //    .movie{
+    //         display: flex;
+    //         flex-wrap: wrap;
+    //         justify-content: center;
 
-            background-color: lightcoral;
-            width: 15vw;
-            border: 1px solid black;
+    //         background-color: lightcoral;
+    //         width: 15vw;
+    //         border: 1px solid black;
          
 
         
-       }
-       .serie{
-            background-color: lightblue;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;    
-            width: 15vw;
-            border: 1px solid black;
+    //    }
+    //    .serie{
+    //         background-color: lightblue;
+    //         display: flex;
+    //         justify-content: center;
+    //         flex-wrap: wrap;    
+    //         width: 15vw;
+    //         border: 1px solid black;
         
-       }
-     }
+    //    }
+    //  }
         
 </style>

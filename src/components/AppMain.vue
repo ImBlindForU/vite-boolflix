@@ -9,8 +9,8 @@ import { store } from '../store';
             
             }
         },methods:{
-          divideNumb(){
-            mathFloor(this.store.movies.vote_average % 2)
+          divideNumb(vote){
+            Math.floor(vote / 2)
           }
         }
     }
@@ -20,7 +20,7 @@ import { store } from '../store';
 <template>
     <div class="container-card">
         <ul class="flex">
-            <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie">
+            <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie" :divideNumb="divideNumb">
                 <div class="container-img ">
                     <img :src="`${store.urlImg}${movie.poster_path}`" alt="">
                 </div>  
@@ -42,8 +42,8 @@ import { store } from '../store';
                         </span>    
                         <br>
                         
-                        <span :fun="divideNumb">
-                                {{movie.vote_average}}
+                        <span>
+                                {{divideNumb(movie.vote_average)}}
                         </span>
                         <small v-for="number in 2">
                                 <i class="fa-solid fa-star"></i>

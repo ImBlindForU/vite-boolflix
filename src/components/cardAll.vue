@@ -10,6 +10,8 @@ export default{
   data(){
         return{
             store,
+            hover: false,
+            hide: false,
         }
   },
   computed:{
@@ -21,22 +23,25 @@ export default{
     }
   },
     methods: {
-        getImgUrl(imgName) {
-            return new URL(`../assets/images/${imgName}.png`, import.meta.url).href;
-        },
         divideNumb(vote){
             return Math.floor(vote / 2)
-            
           }
     }  
 }
 </script>
 
 <template>
-    <div class="container-img ">
-    <img :src="`${getImgUrl}`" alt="">
+  <div class="card-container">
+    <div 
+        @mouseover="(hover = true),(hide = false)"
+        @mouseleave="(hover = false),(hide=true)"
+        v-bind:class="{hidden : hover}"
+    class="container-img ">
+      <img :src="`${store.urlImg}${item.poster_path}`" alt="">
     </div>  
-    <div class="container-text ">
+    <div 
+    v-bind:class="{active : hover, hidden : hide}"
+    class=" container-text ">
         <h3>
           -Titolo:{{getTitle}}
         </h3> 
@@ -61,33 +66,57 @@ export default{
         <div>
           <span>
                     {{divideNumb(item.vote_average)}}
-            </span>
-            <small v-if="divideNumb(item.vote_average) === 1" v-for="number in 1">
-                    <i class="fa-solid fa-star"></i>
-            </small>
-            <small v-if="divideNumb(item.vote_average) === 2" v-for="number in 2">
-                    <i class="fa-solid fa-star"></i>
-            </small>
-            <small v-else-if="divideNumb(item.vote_average) === 3" v-for="number in 3">
-                    <i class="fa-solid fa-star"></i>
-            </small>
-            <small v-else-if="divideNumb(item.vote_average) === 4" v-for="number in 4">
-                    <i class="fa-solid fa-star"></i>
-            </small>
-            <small v-else-if="divideNumb(item.vote_average) === 5" v-for="number in 5">
-                    <i class="fa-solid fa-star"></i>
-            </small>
-            <small v-else-if="divideNumb(item.vote_average) === 0" v-for="number in 0">
-                    no star
-            </small>
+          </span>
+          <small v-if="divideNumb(item.vote_average) === 1" v-for="number in 1">
+                <i class="fa-solid fa-star"></i>
+          </small>
+          <small v-if="divideNumb(item.vote_average) === 2" v-for="number in 2">
+                  <i class="fa-solid fa-star"></i>
+          </small>
+          <small v-else-if="divideNumb(item.vote_average) === 3" v-for="number in 3">
+                  <i class="fa-solid fa-star"></i>
+          </small>
+          <small v-else-if="divideNumb(item.vote_average) === 4" v-for="number in 4">
+                  <i class="fa-solid fa-star"></i>
+          </small>
+          <small v-else-if="divideNumb(item.vote_average) === 5" v-for="number in 5">
+                  <i class="fa-solid fa-star"></i>
+          </small>
+          <small v-else-if="divideNumb(item.vote_average) === 0" v-for="number in 0">
+                  no star
+          </small>
         </div>         
-      </div>
-
+    </div>
+  </div>
+    
 
 </template>
 
 
 <style lang="scss">
+.card-container{
+  border: 1px solid black;
+  background-color: lightblue;
+  min-width: 15vw;
+  div{
+    height: 100%;
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .container-text{
+    background-color: black;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+  span{
+      img{
+        width: 1.5rem;
+      }
+  }
 
-
+}
+}
 </style>

@@ -15,29 +15,33 @@ import cardAll from "./cardAll.vue"
         },methods:{
           divideNumb(vote){
             return Math.floor(vote / 2)
-            
-          }
+          },
+     
+    
         }
     }
     
 </script>
 
 <template>
-    <section>
-        <h2>Movies</h2>
-        <div class="card-list">
-            
-            <cardAll v-for="movie in store.movies" :key="movie.id" :item="movie" />
-        </div>
-    </section>
+    <div class="main-container">
+        <section>
+            <h2>Movies</h2>
+            <div class="card-list">
+                
+                <cardAll v-for="movie in store.movies" :key="movie.id" :item="movie" />
+            </div>
+        </section>
 
-    <section>
-        <h2>Serie TV</h2>
+        <section>
+            <h2>Serie TV</h2>
 
-        <div class="card-list">
-            <cardAll v-for="serie in store.series" :key="serie.id" :item="serie" />
-        </div>
-    </section>
+            <div class="card-list">
+                <cardAll v-for="serie in store.series" :key="serie.id" :item="serie" />
+            </div>
+        </section>
+    </div>
+    
     <!-- <div class="container-card">
         <ul class="flex">
             <li class="movie" v-for="movie in store.movies" :key="movie.id" :movie="movie" :divideNumb="divideNumb">
@@ -152,10 +156,17 @@ import cardAll from "./cardAll.vue"
 
 
 <style lang="scss" >
-.card-list{
+.main-container{
+    background-color:#434343;
+    height: 90vh;
+    .card-list{
     display: flex;
     margin-top: 3rem;
+    overflow: scroll;
+
+    }
 }
+
 
 
     //  .container-card{

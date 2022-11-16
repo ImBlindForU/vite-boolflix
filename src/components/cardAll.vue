@@ -68,23 +68,44 @@ export default{
           <span>
                     {{divideNumb(item.vote_average)}}
           </span>
-          <small v-if="divideNumb(item.vote_average) === 1" v-for="number in 1">
-                <i class="fa-solid fa-star"></i>
-          </small>
-          <small v-if="divideNumb(item.vote_average) === 2" v-for="number in 2">
+          <small v-if="divideNumb(item.vote_average) === 1">
+                <span v-for="number in 1">
                   <i class="fa-solid fa-star"></i>
+                </span>
+                <span  v-for="num in 4">
+                  <i class="fa-regular fa-star"></i>
+                </span>
           </small>
-          <small v-else-if="divideNumb(item.vote_average) === 3" v-for="number in 3">
+          <small v-if="divideNumb(item.vote_average) === 2" >
+                <span v-for="number in 2">
                   <i class="fa-solid fa-star"></i>
+                </span>
+                <span  v-for="num in 3">
+                  <i class="fa-regular fa-star"></i>
+                </span>
+                  
           </small>
-          <small v-else-if="divideNumb(item.vote_average) === 4" v-for="number in 4">
+          <small v-else-if="divideNumb(item.vote_average) === 3">
+                <span v-for="number in 3">
                   <i class="fa-solid fa-star"></i>
+                </span>
+                <span  v-for="num in 2">
+                  <i class="fa-regular fa-star"></i>
+                </span>
+          </small>
+          <small v-else-if="divideNumb(item.vote_average) === 4" >
+                <span v-for="number in 4">
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span  v-for="num in 1">
+                  <i class="fa-regular fa-star"></i>
+                </span>
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 5" v-for="number in 5">
                   <i class="fa-solid fa-star"></i>
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 0" v-for="number in 0">
-                  no star
+                  zero
           </small>
         </div>         
     </div>

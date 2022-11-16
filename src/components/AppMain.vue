@@ -162,7 +162,8 @@ import cardAll from "./cardAll.vue"
     .card-list{
     display: flex;
     margin-top: 3rem;
-    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
 
     }
 }

@@ -25,7 +25,8 @@ export default{
     methods: {
         divideNumb(vote){
             return Math.floor(vote / 2)
-          }
+          },
+        
     }  
 }
 </script>
@@ -51,13 +52,13 @@ export default{
         <div>
           -lingua: 
             <span v-if="item.original_language === 'it'">
-                <img src="https://i.pinimg.com/564x/db/0d/7a/db0d7a27d2f84cd939a743e5a06e4981.jpg" alt="">
+                <img src="../assets/img/it.jpg" alt="">
             </span> 
             <span v-else-if="item.original_language === 'en'">
-                <img src="https://i.pinimg.com/564x/60/e1/2e/60e12ef8f91004862d6413b7f26f0b13.jpg" alt="">
+                <img src="../assets/img/en.jpg" alt="">
             </span>
             <span v-else-if="item.original_language === 'fr'">
-                <img src="https://i.pinimg.com/564x/b8/65/53/b86553087e766ae92c392f1067714dce.jpg" alt="">
+                <img src="../assets/img/fr.jpg" alt="">
             </span>
             <span v-else>
                 {{item.original_language}} 

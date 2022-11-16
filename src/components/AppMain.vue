@@ -55,12 +55,14 @@ import cardAll from "./cardAll.vue"
     display: flex;
     margin-top: 3rem;
     overflow-y: hidden;
+    margin-left: 3rem;
+    
     }
     h2{
         font-size: 3rem;
         color: white;
         padding-top: 3rem;
-        padding-left: 1rem;
+        padding-left: 3rem;
     }
 }
 

@@ -20,11 +20,11 @@ export default{
     },
     getOriginalTitle() {
             return this.item.original_title ? this.item.original_title : this.item.original_name;
-    }
+    },
   },
     methods: {
-        divideNumb(vote){
-            return Math.floor(vote / 2)
+        divideNumb(){
+            return Math.floor(this.vote_average / 2)
           },
         
     }  
@@ -32,24 +32,24 @@ export default{
 </script>
 
 <template>
-  <div class="card-container">
-    <div 
-        @mouseover="(hover = true),(hide = false)"
-        @mouseleave="(hover = false),(hide=true)"
-        v-bind:class="{hidden : hover}"
+  <div class="card-container"
+        @mouseover="hover = true ; hide = false"
+        @mouseleave="hover = false; hide=true">
+    <div v-bind:class="{hidden : hover}"
     class="container-img ">
       <img :src="`${store.urlImg}${item.poster_path}`" alt="">
     </div>  
-    <div 
-    v-bind:class="{active : hover, hidden : hide}"
+    <div v-bind:class="{active : hover, hidden : hide}"
     class=" container-text ">
+      <div class="text">
         <h3>
           -Titolo:{{getTitle}}
         </h3> 
-        <p>
+        <h4>
         -Titolo originale :{{getOriginalTitle}}
-        </p>
-        <div>
+        </h4>
+        <p>Overview: {{item.overview}}</p>
+        <div class="language">
           -lingua: 
             <span v-if="item.original_language === 'it'">
                 <img src="../assets/img/it.jpg" alt="">
@@ -65,49 +65,52 @@ export default{
             </span>    
         </div>
         <div>
-          <span>
-                    {{divideNumb(item.vote_average)}}
+          <i v-for="n in 5" :key="n" :class="n <= divideNumb ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
+          <!-- <span>
+              {{divideNumb(item.vote_average)}}
           </span>
           <small v-if="divideNumb(item.vote_average) === 1">
-                <span v-for="number in 1">
+                <span v-for="number in 1" class="yellow">
                   <i class="fa-solid fa-star"></i>
                 </span>
-                <span  v-for="num in 4">
+                <span  v-for="num in 4" class="white">
                   <i class="fa-regular fa-star"></i>
                 </span>
           </small>
           <small v-if="divideNumb(item.vote_average) === 2" >
-                <span v-for="number in 2">
+                <span v-for="number in 2" class="yellow">
                   <i class="fa-solid fa-star"></i>
                 </span>
-                <span  v-for="num in 3">
+                <span  v-for="num in 3" class="white">
                   <i class="fa-regular fa-star"></i>
                 </span>
                   
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 3">
-                <span v-for="number in 3">
+                <span v-for="number in 3" class="yellow">
                   <i class="fa-solid fa-star"></i>
                 </span>
-                <span  v-for="num in 2">
+                <span  v-for="num in 2" class="white">
                   <i class="fa-regular fa-star"></i>
                 </span>
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 4" >
-                <span v-for="number in 4">
+                <span v-for="number in 4" class="yellow">
                   <i class="fa-solid fa-star"></i>
                 </span>
-                <span  v-for="num in 1">
+                <span  v-for="num in 1" class="white">
                   <i class="fa-regular fa-star"></i>
                 </span>
           </small>
-          <small v-else-if="divideNumb(item.vote_average) === 5" v-for="number in 5">
+          <small v-else-if="divideNumb(item.vote_average) === 5" v-for="number in 5" class="yellow">
                   <i class="fa-solid fa-star"></i>
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 0" v-for="number in 0">
                   zero
-          </small>
-        </div>         
+          </small> -->
+        </div>      
+      </div>
+          
     </div>
   </div>
     
@@ -117,9 +120,16 @@ export default{
 
 <style lang="scss">
 .card-container{
-  border: 1px solid black;
-  background-color: lightblue;
+  border: 1px solid white;
+  background-color: black;
   min-width: 15vw;
+  perspective: 1000px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .8s;
+  &:hover {
+      transform: rotateY(180deg);
+    }
   div{
     height: 100%;
     img{
@@ -128,17 +138,54 @@ export default{
       height: 100%;
     }
   }
+  .container-img{
+    backface-visibility: hidden;
+    
+  }
   .container-text{
     background-color: black;
     color: white;
-    text-align: center;
-    vertical-align: center;
-  span{
-      img{
-        width: 1.5rem;
-      }
-  }
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    transform: rotateY(180deg);
+    .text{
+      margin-top: 3rem;
+      padding: 1rem;
 
-}
+      h3{
+        font-size: 2.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      h4{
+        font-size: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      p{
+        font-style: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+      .language{
+      img{
+        width: 50px;
+        height: 30px;
+      }
+    }
+    }
+    
+    
+
+  }
 }
 </style>

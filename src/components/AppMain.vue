@@ -48,10 +48,10 @@ import cardAll from "./cardAll.vue"
 
 <style lang="scss" >
 .main-container{
-    background-color:#434343;
+    background-color:#141414;
     height: 90vh;
     .card-list{
-    background-color:#434343;
+    background-color:#141414;
     display: flex;
     margin-top: 3rem;
     overflow-y: hidden;
@@ -64,51 +64,5 @@ import cardAll from "./cardAll.vue"
     }
 }
 
-
-
-    //  .container-card{
-    //     width: 100vw;
-    //     .container-img{
-    //         width: 100%;
-    //         img{
-    //             object-fit: cover;
-    //             width: 100%;
-    //             height: 100%;
-    //         }
-    //     }
-    //     background-color: #434343;
-    //     .flex{
-    //         display: flex;
-    //         flex-wrap: wrap;
-            
-    //     }
-    //     li{
-    //         font-size: 3rem;
-    //         text-align: center;
-    //         margin: 1.5rem;
-    //     }
-
-    //    .movie{
-    //         display: flex;
-    //         flex-wrap: wrap;
-    //         justify-content: center;
-
-    //         background-color: lightcoral;
-    //         width: 15vw;
-    //         border: 1px solid black;
-         
-
-        
-    //    }
-    //    .serie{
-    //         background-color: lightblue;
-    //         display: flex;
-    //         justify-content: center;
-    //         flex-wrap: wrap;    
-    //         width: 15vw;
-    //         border: 1px solid black;
-        
-    //    }
-    //  }
         
 </style>

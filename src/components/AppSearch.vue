@@ -14,10 +14,20 @@ import { store } from '../store';
 
 <template>
 
-    <div class="container">
-        <div class="logo">
-            <img src="../assets/img/Logonetflix.png" alt="">
-        </div>
+    <div class="container">   
+            <div class="logo">
+                <img src="../assets/img/Logonetflix.png" alt="">
+            </div>
+        <div class="list">
+                <ul>
+                    <li>Home</li>
+                    <li>Serie TV</li>
+                    <li>Film</li>
+                    <li>Originali</li>
+                    <li>Aggiunti di recente</li>
+                    <li>La mia lista</li>
+                </ul>
+            </div>
         <div class="input">
             <label for="search"></label>
             <input v-model="store.searchKey" type="text" name="search" >
@@ -36,19 +46,44 @@ import { store } from '../store';
         width: 100vw;
         height: 10vh;
         background-color: #000000;
-        .logo{
-            img{
+            
+            .logo{
+                margin-left: 3rem;
+                img{
                 width: 10vw;
+                }   
             }
-        }
+            .list{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                ul{
+                    list-style: none;
+                    display: flex;
+                    color: grey;
+                    justify-content: space-between;
+                    li{
+                        padding: 1rem;
+                        font-size: 2rem;
+                        &:hover{
+                            color: white;
+                        }
+                    }
+
+                }
+               
+            }
+           
+
         .input{
+            margin-right: 3rem;
             input{
             line-height: 3rem;
             font-size: 3rem;
             }
 
-        button{
-            line-height: 3rem;
+            button{
+            
             font-size: 3rem;
             }
         }   

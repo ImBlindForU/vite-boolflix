@@ -64,9 +64,9 @@ export default{
                 {{item.original_language}} 
             </span>    
         </div>
-        <div>
-          <span>
-              {{divideNumb(item.vote_average)}}
+        <div class="star">
+          <span >
+               {{divideNumb(item.vote_average)}} 
           </span>
           <small v-if="divideNumb(item.vote_average) === 1">
                 <span v-for="number in 1" class="yellow">
@@ -130,7 +130,6 @@ export default{
       transform: rotateY(180deg);
     }
   div{
-    height: 100%;
     img{
       object-fit: cover;
       width: 100%;
@@ -158,6 +157,11 @@ export default{
       margin-top: 3rem;
       padding: 1rem;
 
+      .star{
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+     
       h3{
         font-size: 2.5rem;
         padding-top: 1rem;

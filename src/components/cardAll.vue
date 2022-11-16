@@ -23,8 +23,8 @@ export default{
     },
   },
     methods: {
-        divideNumb(){
-            return Math.floor(this.vote_average / 2)
+        divideNumb(vote){
+            return Math.floor(vote / 2)
           },
         
     }  
@@ -65,8 +65,7 @@ export default{
             </span>    
         </div>
         <div>
-          <i v-for="n in 5" :key="n" :class="n <= divideNumb ? 'fa-solid' : 'fa-regular'" class="fa-star"></i>
-          <!-- <span>
+          <span>
               {{divideNumb(item.vote_average)}}
           </span>
           <small v-if="divideNumb(item.vote_average) === 1">
@@ -107,7 +106,7 @@ export default{
           </small>
           <small v-else-if="divideNumb(item.vote_average) === 0" v-for="number in 0">
                   zero
-          </small> -->
+          </small>
         </div>      
       </div>
           
